@@ -7,49 +7,48 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
     <TextView
-            android:text="Alta/Edicion"
-            android:layout_width="119dp"
-            android:layout_height="32dp"
+            android:text="Nuevo"
+            android:layout_width="70dp"
+            android:layout_height="31dp"
             android:id="@+id/Ir_edicion"
             android:textSize="18sp"
             android:textColor="@android:color/background_light" android:textAlignment="center"
             android:background="@color/colorPrimaryDark"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="4dp"/>
     <TextView
             android:text="Saldos"
-            android:layout_width="129dp"
-            android:layout_height="32dp"
+            android:layout_width="73dp"
+            android:layout_height="29dp"
             android:id="@+id/Ir_saldos"
             android:textSize="18sp"
             android:textColor="@android:color/background_light" android:textAlignment="center"
             android:background="@color/colorPrimaryDark"
-            app:layout_constraintStart_toEndOf="@+id/Ir_edicion" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/Ir_edicion" android:layout_marginStart="12dp"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="4dp"/>
     <TextView
             android:text="Moviminetos"
-            android:layout_width="126dp"
-            android:layout_height="32dp"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
             android:id="@+id/Ir_moviminetos"
             android:textSize="18sp"
             android:textColor="@android:color/background_light" android:textAlignment="center"
             android:background="@color/colorPrimaryDark"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/Ir_saldos" android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@+id/Ir_saldos" android:layout_marginStart="12dp"
     />
     <TextView
             android:text="Clientes"
-            android:layout_width="376dp"
+            android:layout_width="248dp"
             android:layout_height="45dp"
-            android:id="@+id/textView4" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/textView4"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.159" android:textSize="24sp" android:lineSpacingExtra="12sp"
+            android:textSize="24sp" android:lineSpacingExtra="12sp"
             android:textAlignment="textStart" android:textStyle="bold" android:layout_marginTop="16dp"/>
     <android.support.design.widget.TextInputLayout
-            android:layout_width="403dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="60dp" app:layout_constraintTop_toBottomOf="@+id/Ir_saldos"
@@ -60,31 +59,34 @@
             android:id="@+id/textInputLayout" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent">
 
         <android.support.design.widget.TextInputEditText
-                android:layout_width="471dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="@tools:sample/full_names"
                 android:typeface="normal"
                 android:textColor="@color/colorPrimary" android:textAlignment="textStart"/>
     </android.support.design.widget.TextInputLayout>
     <ScrollView
-            android:layout_width="464dp"
-            android:layout_height="480dp" android:layout_marginTop="56dp"
+            android:layout_width="0dp"
+            android:layout_height="239dp" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:id="@+id/scrollView2"
+            android:layout_marginStart="8dp" android:id="@+id/Contenedor_clientes"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="1.0" style="@android:style/Widget.Material.Light.ScrollView">
+            app:layout_constraintHorizontal_bias="0.0" style="@android:style/Widget.Material.Light.ScrollView">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical"/>
+                      android:orientation="vertical">
+        </LinearLayout>
     </ScrollView>
     <TableLayout
-            android:layout_width="428dp"
-            android:layout_height="463dp"
-            app:layout_constraintEnd_toEndOf="@+id/scrollView2" app:layout_constraintStart_toStartOf="@+id/scrollView2"
+            android:layout_width="0dp"
+            android:layout_height="240dp"
+            app:layout_constraintEnd_toEndOf="@+id/Contenedor_clientes"
+            app:layout_constraintStart_toStartOf="@+id/Contenedor_clientes"
             android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.214"
-            android:layout_marginTop="64dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-            android:id="@+id/tableLayout">
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            android:id="@+id/tableLayout" app:layout_constraintBottom_toTopOf="@+id/Contenedor_clientes"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.0">
 
         <TableRow
                 android:layout_width="match_parent"
@@ -102,8 +104,9 @@
                     android:textAlignment="center"/>
             <TextView
                     android:text="Nombre"
-                    android:layout_width="250dp"
-                    android:layout_height="30dp" android:id="@+id/textView2" android:paddingLeft="@dimen/fab_margin"
+                    android:layout_width="171dp"
+                    android:layout_height="30dp" android:id="@+id/textView2"
+                    android:paddingLeft="@dimen/fab_margin"
                     android:paddingRight="@dimen/fab_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat" android:textSize="18sp"
                     android:textStyle="bold" android:textColor="@android:color/background_light"/>
@@ -117,12 +120,20 @@
     </TableLayout>
     <TextView
             android:text="elgael06"
-            android:layout_width="194dp"
-            android:layout_height="36dp"
-            android:id="@+id/textView9" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="160dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="8dp"
+            android:layout_width="192dp"
+            android:layout_height="24dp"
+            android:id="@+id/textView9"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:textAlignment="center" android:textSize="12sp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-            app:layout_constraintVertical_bias="0.708"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/Contenedor_clientes" app:layout_constraintVertical_bias="1.0"/>
+    <Button
+            android:text="Add"
+            android:layout_width="72dp"
+            android:layout_height="45dp"
+            android:id="@+id/actualizar" app:layout_constraintStart_toEndOf="@+id/textView4"
+            android:layout_marginStart="24dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 </android.support.constraint.ConstraintLayout>

@@ -22,6 +22,7 @@ class Usuario_manager {
 
         bd.insert("Usuarios",null,registro )
 
+        bd.close()
         Toast.makeText(contexto, "Se cargaron los datos del Usuario.", Toast.LENGTH_SHORT).show()
     }
     fun BajaUsuario(codigo:Int,contexto: Context){
@@ -29,6 +30,7 @@ class Usuario_manager {
         var  bd = user.writableDatabase
         val cant = bd.delete("articulos", "codigo=${codigo}", null)
 
+        bd.close()
         when(cant){
             1->Toast.makeText(contexto, "Se Borraron los datos del Usuario.", Toast.LENGTH_SHORT).show()
             else ->Toast.makeText(contexto, "Error al Borrar Los Datos del Usuario.", Toast.LENGTH_SHORT).show()
@@ -38,7 +40,7 @@ class Usuario_manager {
         var usuario = Usuario()
         var user=  tabla_usuarios(contexto,"Administracion", null, 1)
         var  bd = user.writableDatabase
-        val fila = bd.rawQuery("select codigo,precio from articulos where descripcion='${codigo}'", null)
+        val fila = bd.rawQuery("select * from Usuarios where codigo='${codigo}'", null)
 
         if (fila.moveToFirst()){
             usuario.codigo=   fila.getString(0).toInt()
@@ -50,7 +52,34 @@ class Usuario_manager {
 
         }else Toast.makeText(contexto, "Error No existe los datos del Usuario.", Toast.LENGTH_SHORT).show()
 
+        bd.close()
         return  usuario
+    }
+    fun Todos(contexto: Context):List<Usuario>{
+       var usuarios:MutableList<Usuario> = mutableListOf()
+
+        var user=  tabla_usuarios(contexto,"Administracion", null, 1)
+        var  bd = user.writableDatabase
+        val fila = bd.rawQuery("select * from Usuarios ", null)
+
+        while( fila.moveToNext()){
+
+                var usuario = Usuario()
+
+                usuario.codigo          = fila.getInt(0)
+                usuario.nombre          = fila.getString(1)
+                usuario.referencia      = fila.getString(2)
+                usuario.direccion       = fila.getString(3)
+                usuario.numero_telefono = fila.getString(4)
+                usuario.estatus         = fila.getString(5)
+
+                usuarios.add(usuario)
+        }
+
+        bd.close()
+
+        Toast.makeText(contexto, "Usuarios.${usuarios.count()}", Toast.LENGTH_SHORT).show()
+        return  usuarios
     }
     fun CambioUsuario(seleccion: Usuario,contexto: Context){
         var user=  tabla_usuarios(contexto,"Administracion", null, 1)
@@ -66,6 +95,7 @@ class Usuario_manager {
         registro.put("numero_telefono",seleccion.numero_telefono)
 
         bd.update("Usuarios",registro,"codigo=${seleccion.codigo}",null )
+        bd.close()
         Toast.makeText(contexto, "Se Actualizaron los datos del Usuario.", Toast.LENGTH_SHORT).show()
     }
 }
