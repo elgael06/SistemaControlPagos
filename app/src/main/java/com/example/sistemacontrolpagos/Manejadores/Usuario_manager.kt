@@ -13,7 +13,7 @@ class Usuario_manager {
 
         val registro = ContentValues()
 
-        registro.put("codigo",seleccion.codigo)
+//        registro.put("codigo",seleccion.codigo)
         registro.put("nombre",seleccion.nombre)
         registro.put("referencia",seleccion.referencia)
         registro.put("direccion",seleccion.direccion)
@@ -78,7 +78,7 @@ class Usuario_manager {
 
         bd.close()
 
-        Toast.makeText(contexto, "Usuarios.${usuarios.count()}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(contexto, "Usuarios:${usuarios.count()}", Toast.LENGTH_SHORT).show()
         return  usuarios
     }
     fun CambioUsuario(seleccion: Usuario,contexto: Context){

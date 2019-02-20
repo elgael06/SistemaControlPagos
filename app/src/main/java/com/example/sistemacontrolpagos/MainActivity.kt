@@ -3,22 +3,25 @@ package com.example.sistemacontrolpagos
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
-import android.widget.Toast
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.widget.*
 import com.example.sistemacontrolpagos.Manejadores.Usuario_manager
+import com.example.sistemacontrolpagos.Manejadores.myAdapter
 import com.example.sistemacontrolpagos.Modelos.Usuario
 import com.example.sistemacontrolpagos.Vistas.EdicionCliente
 import com.example.sistemacontrolpagos.Vistas.Moviminetos_cuentas
 import com.example.sistemacontrolpagos.Vistas.Saldo_cliente
 import kotlinx.android.synthetic.main.activity_main.*
+//import org.jetbrains.anko.find
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //val recicle:RecyclerView = find(R.id.Contenedor_clientes)
 
         llenarUsuarios()
 
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         actualizar.setOnClickListener{
             llenarUsuarios()
         }
-    }
+      }
     fun Ir_a_edicion(){
         Toast.makeText(applicationContext,"Edicion", Toast.LENGTH_SHORT).show()
         var vista: Intent = Intent(this, EdicionCliente() ::class.java)
@@ -51,25 +54,28 @@ class MainActivity : AppCompatActivity() {
         startActivity(vista)
     }
 
-    fun llenarUsuarios(){
+    fun llenarUsuarios( ){
+        val lista_ = Usuario_manager().Todos(this)
+        val lista:List<String> = listOf("uno","dos","tres")
+        //recicle.layoutManager = LinearLayoutManager(this)
+        //recicle.adapter = myAdapter(lista)
 
-        var lista = Usuario_manager().Todos(this)
+        tabla_usuarios.clearDisappearingChildren()
+        lista_?.forEach {agregar_usuario_a_lista(it)}
 
-        lista.map {
-            usuario ->{agregar_usuario_a_lista(usuario)}
-        }
+   //
     }
     fun agregar_usuario_a_lista(valor:Usuario){
         var fila = TableRow(applicationContext)
         var id = TextView(applicationContext)
         var nombre = TextView(applicationContext)
+        println("nombre=${nombre}")
 
-        id.setText(valor.codigo)
-        nombre.setText(valor.nombre)
+        id.text = valor.codigo.toString()
+        nombre.text = valor.nombre
 
         fila.addView(id)
         fila.addView(nombre)
-
 
         tabla_usuarios.addView(fila, TableLayout.LayoutParams(
             TableLayout.LayoutParams.WRAP_CONTENT,
