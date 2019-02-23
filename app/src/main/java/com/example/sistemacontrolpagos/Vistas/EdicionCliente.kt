@@ -2,6 +2,7 @@ package com.example.sistemacontrolpagos.Vistas
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.sistemacontrolpagos.Manejadores.Usuario_manager
 import com.example.sistemacontrolpagos.R
 import com.example.sistemacontrolpagos.Modelos.Usuario
@@ -34,7 +35,7 @@ class EdicionCliente : AppCompatActivity() {
             txt_referencia.setText("")
             btn_estatus.text="No"
         }
-        else print("no")
+        else Toast.makeText(applicationContext,"No Se Puede Guardar!!!", Toast.LENGTH_SHORT).show()
     }
     fun comprobar_campos():Boolean{
         asignar_usuario()

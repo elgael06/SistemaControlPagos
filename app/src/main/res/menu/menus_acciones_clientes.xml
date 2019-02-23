@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:title="Nuevo" android:orderInCategory="101" android:id="@+id/menu_nuevo"
+          android:icon="@android:drawable/ic_input_add" android:visible="true" android:enabled="true"/>
+    <item android:title="Editar" android:orderInCategory="102" android:id="@+id/menu_editar"
+          android:icon="@android:drawable/ic_menu_edit" android:visible="true" android:enabled="true"/>
+    <item android:id="@+id/menu_moviminetos" android:title="Moviminetos"
+          android:orderInCategory="104" app:showAsAction="never" android:visible="true" android:enabled="true"/>
+    <item android:title="Saldos" android:orderInCategory="103" android:id="@+id/menu_saldos"
+          android:icon="@android:drawable/ic_input_get" android:visible="true" android:enabled="true"/>
+    <item android:title="Cerrar" android:orderInCategory="105" android:id="@+id/menu_cerrar"/>
+</menu>
