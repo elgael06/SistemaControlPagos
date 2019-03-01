@@ -73,17 +73,18 @@ class MainActivity : AppCompatActivity() {
 
     fun llenarUsuarios( ){
         val lista_ = Usuario_manager().Todos(this)
-
-        tabla_usuarios.removeAllViewsInLayout()
-        tabla_usuarios.clearDisappearingChildren()
-        lista_?.forEach {agregar_usuario_a_lista(it)}
-
         Lista_clientes.layoutManager = LinearLayoutManager(this)
         Lista_clientes.hasFixedSize()
         Lista_clientes.adapter = Clientes_adapter(lista_)
 
         Lista_clientes.layoutManager = LinearLayoutManager(this)
         Lista_clientes.adapter = Clientes_adapter(lista_)
+
+        tabla_usuarios.removeAllViewsInLayout()
+        tabla_usuarios.clearDisappearingChildren()
+        lista_?.forEach {
+            agregar_usuario_a_lista(it)
+        }
 
    //
     }

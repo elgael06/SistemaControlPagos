@@ -55,8 +55,8 @@ class Usuario_manager {
         bd.close()
         return  usuario
     }
-    fun Todos(contexto: Context):List<Usuario>{
-       var usuarios:MutableList<Usuario> = mutableListOf()
+    fun Todos(contexto: Context):ArrayList<Usuario>{
+       var usuarios:ArrayList<Usuario> = ArrayList()
 
         var user=  tabla_usuarios(contexto,"Administracion", null, 1)
         var  bd = user.writableDatabase

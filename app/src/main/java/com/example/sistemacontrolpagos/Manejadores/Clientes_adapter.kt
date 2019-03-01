@@ -8,13 +8,14 @@ import com.example.sistemacontrolpagos.Modelos.Usuario
 import com.example.sistemacontrolpagos.R
 import kotlinx.android.synthetic.main.view_cliente.view.*
 
-class Clientes_adapter(val lista :List<Usuario>) : RecyclerView.Adapter<Clientes_adapter.vista_cliente>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Clientes_adapter.vista_cliente {
+class Clientes_adapter(val lista :ArrayList<Usuario>) : RecyclerView.Adapter<Clientes_adapter.vista_cliente>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): vista_cliente {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.view_cliente, parent, false)
         return vista_cliente(v)
     }
     override fun getItemCount(): Int=lista.size
-    override fun onBindViewHolder(holder: Clientes_adapter.vista_cliente, position: Int) {
+    override fun onBindViewHolder(holder: vista_cliente, position: Int) {
         holder.crear_item(lista[position])
     }
     class vista_cliente (itemView:View): RecyclerView.ViewHolder(itemView){
